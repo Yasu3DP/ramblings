@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A retro MS-DOS style blog">
+    <title>DOS Blog Launcher</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000080;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            background-color: #000080;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #FFFFFF;
+        }
+        
+        .menu-bar {
+            display: flex;
+            background-color: #000080;
+            color: white;
+            padding: 5px 10px;
+            border-bottom: 1px solid #FFFFFF;
+        }
+        
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        
+        .content {
+            flex-grow: 1;
+            background-color: #0000AA;
+            padding: 10px;
+            overflow: auto;
+        }
+        
+        .blog-list {
+            background-color: #0000AA;
+            border: 1px solid #FFFFFF;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            max-height: calc(100vh - 120px);
+        }
+        
+        .blog-list-header {
+            background-color: #0000AA;
+            color: white;
+            padding: 5px 10px;
+            border-bottom: 1px solid #FFFFFF;
+        }
+        
+        .blog-item {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .blog-item:hover, .blog-item.active {
+            background-color: #0000FF;
+            color: #FFFFFF;
+        }
+        
+        .footer {
+            display: flex;
+            background-color: #0000AA;
+            color: white;
+            padding: 5px 0;
+            border-top: 1px solid #FFFFFF;
+            justify-content: space-around;
+        }
+        
+        .footer-button {
+            background-color: #0000AA;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            padding: 2px 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .blog-content {
+            display: none;
+            background-color: #000080;
+            color: #FFFFFF;
+            padding: 20px;
+            margin: 10px 0;
+            border: 1px solid #FFFFFF;
+            overflow: auto;
+        }
+        
+        .blog-content.active {
+            display: block;
+        }
+        
+        /* Ensure this is SEO friendly */
+        h1, h2, h3 {
+            color: #FFFFFF;
+        }
+        
+        a {
+            color: #00FFFF;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .menu-bar {
+                flex-direction: column;
+            }
+            
+            .menu-item {
+                margin: 5px 0;
+            }
+            
+            .footer {
+                flex-wrap: wrap;
+            }
+            
+            .footer-button {
+                margin: 5px;
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>LaunchBlog for DOS - Version 1.0</h1>
+    </div>
+    
+    <div class="menu-bar">
+        <div class="menu-item">File</div>
+        <div class="menu-item">View</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">Help</div>
+    </div>
+    
+    <div class="content">
+        <div class="blog-list-header">
+            All Posts (3)
+        </div>
+        <ul class="blog-list">
+            <li class="blog-item" onclick="showBlog('post1')">First Blog Post - Welcome to DOS Blog</li>
+            <li class="blog-item" onclick="showBlog('post2')">The Beauty of Minimalist Web Design</li>
+            <li class="blog-item" onclick="showBlog('post3')">Retro Computing and Modern Web Development</li>
+        </ul>
+        
+        <div id="post1" class="blog-content">
+            <h2>Welcome to DOS Blog</h2>
+            <p>Posted: April 13, 2025</p>
+            <p>Welcome to my DOS-style blog! This is where I'll be sharing my thoughts on technology, web development, and retro computing.</p>
+            <p>The design of this blog is inspired by classic MS-DOS program launchers from the late 1980s and early 1990s. Despite the retro look, this site is built with modern HTML and CSS to ensure fast loading times and good SEO practices.</p>
+            <p>Feel free to navigate through the posts by clicking on the titles in the main menu.</p>
+            <p><a href="#" onclick="goBack()">Back to list</a></p>
+        </div>
+        
+        <div id="post2" class="blog-content">
+            <h2>The Beauty of Minimalist Web Design</h2>
+            <p>Posted: April 11, 2025</p>
+            <p>In today's world of heavy JavaScript frameworks and bloated websites, there's something refreshing about minimalist design. This blog aims to embrace that philosophy.</p>
+            <p>Benefits of minimalist designs include:</p>
+            <ul>
+                <li>Faster load times</li>
+                <li>Better accessibility</li>
+                <li>Improved SEO</li>
+                <li>Lower bandwidth usage</li>
+            </ul>
+            <p>By keeping things simple and focusing on content, we can create websites that are both functional and nostalgic.</p>
+            <p><a href="#" onclick="goBack()">Back to list</a></p>
+        </div>
+        
+        <div id="post3" class="blog-content">
+            <h2>Retro Computing and Modern Web Development</h2>
+            <p>Posted: April 7, 2025</p>
+            <p>There's a growing trend of developers embracing retro aesthetics while using modern development techniques. This approach combines nostalgia with functionality.</p>
+            <p>Some popular retro-inspired web design trends include:</p>
+            <ul>
+                <li>DOS and terminal-style interfaces</li>
+                <li>Pixel art and 8-bit graphics</li>
+                <li>Monospaced fonts and limited color palettes</li>
+                <li>Text-based navigation systems</li>
+            </ul>
+            <p>These design choices can make your website stand out while still being accessible and search engine friendly.</p>
+            <p><a href="#" onclick="goBack()">Back to list</a></p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-button">&lt; All &gt;</div>
+        <div class="footer-button">&lt; Tags &gt;</div>
+        <div class="footer-button">&lt; Series &gt;</div>
+        <div class="footer-button">&lt; Archive &gt;</div>
+        <div class="footer-button">&lt; About &gt;</div>
+    </div>
+    
+    <script>
+        function showBlog(id) {
+            // Hide all blog contents
+            const contents = document.querySelectorAll('.blog-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show the selected blog content
+            document.getElementById(id).classList.add('active');
+            
+            // Update active state in the list
+            const items = document.querySelectorAll('.blog-item');
+            items.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('onclick').includes(id)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        function goBack() {
+            // Hide all blog contents
+            const contents = document.querySelectorAll('.blog-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active state from list items
+            const items = document.querySelectorAll('.blog-item');
+            items.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
